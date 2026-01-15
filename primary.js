@@ -85,11 +85,23 @@ function translateverse2(translatetext, hebrewverse, type)
 				const translatedtext = document.createElement("p");
 				translatedtext.innerText = translated;
 				lexiconposition = document.getElementsByClassName("lexStrongsDef");
-				for(var i = 0; i< lexiconposition.length; i++)
+				const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            	if(isMobile)
+            	{
+					lexiconposition[0].before(translatedtext);
+					lexiconposition[0].parentElement.children[0].innerText = "Oρισμοί του Strong";
+				}
+				else
 				{
-				    lexiconposition[i].children[0].before(translatedtext);
-				    lexiconposition[i].before(translatedtext);
-				    lexiconposition[i].parentElement.children[0].innerText = "Oρισμοί του Strong";
+					for(var i = 0; i< lexiconposition.length; i++)
+					{
+						try
+		    	        {
+							lexiconposition[i].before(translatedtext);
+							lexiconposition[i].parentElement.children[0].innerText = "Oρισμοί του Strong";
+						}
+						catch(err){console.log(err);}
+					}
 				}
     		}
     	}
@@ -125,6 +137,7 @@ function addgreekverses()
 {
     try
     {
+    	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         const text_verse = document.querySelectorAll('a[data-type="toolsHover"]');
         for(let i = 0; i<text_verse.length; i++)
         {
@@ -141,267 +154,1323 @@ function addgreekverses()
                 hrefverse = hreftag.substring(hreftag.nthIndexOf('/',6)+1,hreftag.nthIndexOf('/',7));
                 if(hrefbook == "gen")
                 {
+                    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().genesis_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().genesis_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
                     text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().genesis_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
                 }
                 else if(hrefbook == "exo")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().exodus_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().exodus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().exodus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().exodus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "lev")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().leviticus_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().leviticus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().leviticus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().leviticus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "num")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().numbers_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().numbers_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().numbers_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().numbers_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "deu")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().deuteronomy_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().deuteronomy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().deuteronomy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().deuteronomy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jos")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().joshua_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().joshua_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().joshua_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().joshua_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jdg")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().judges_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().judges_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().judges_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().judges_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "rth")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ruth_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().ruth_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().ruth_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ruth_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1sa")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2sa")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_samuel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1ki")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2ki")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_kings_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1ch")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2ch")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_chronicles_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "ezr")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ezra_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().ezra_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().ezra_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ezra_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "neh")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().nehemiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().nehemiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().nehemiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().nehemiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "est")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().esther_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().esther_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().esther_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().esther_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "job")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().job_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().job_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().job_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().job_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "psa")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().psalms_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().psalms_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().psalms_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().psalms_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "pro")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().proverbs_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().proverbs_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().proverbs_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().proverbs_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "ecc")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ecclesiastes_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().ecclesiastes_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().ecclesiastes_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ecclesiastes_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "sng")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().song_of_songs_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().song_of_songs_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().song_of_songs_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().song_of_songs_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "isa")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().isaiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().isaiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().isaiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().isaiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jer")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().jeremiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().jeremiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().jeremiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().jeremiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "lam")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().lamentations_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().lamentations_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().lamentations_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().lamentations_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "eze")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ezekiel_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().ezekiel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().ezekiel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ezekiel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "dan")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().daniel_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().daniel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().daniel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().daniel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "hos")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().hosea_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().hosea_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().hosea_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().hosea_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "joe")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().joel_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().joel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().joel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().joel_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "amo")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().amos_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().amos_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().amos_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().amos_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "oba")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().obadiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().obadiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().obadiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().obadiah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jon")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().jonah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().jonah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().jonah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().jonah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "mic")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().micah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().micah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().micah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().micah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "nah")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().nahum_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().nahum_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().nahum_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().nahum_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "hab")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().habakkuk_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().habakkuk_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().habakkuk_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().habakkuk_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "zep")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().zephaniah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().zephaniah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().zephaniah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().zephaniah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "hag")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().haggai_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().haggai_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().haggai_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().haggai_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "zec")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().zechariah_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().zechariah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().zechariah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().zechariah_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "mal")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().malachi_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().malachi_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().malachi_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().malachi_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "mat")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().matthew_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().matthew_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().matthew_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().matthew_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "mar")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().mark_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().mark_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().mark_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().mark_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "luk")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().luke_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().luke_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().luke_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().luke_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jhn")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().john_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "act")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().acts_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().acts_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().acts_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().acts_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "rom")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().romans_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().romans_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().romans_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().romans_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1co")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2co")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_corinthians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "gal")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().galatians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().galatians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().galatians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().galatians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "eph")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ephesians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().ephesians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().ephesians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().ephesians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "phl")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().philippians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().philippians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().philippians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().philippians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "col")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().colossians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().colossians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().colossians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().colossians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1th")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2th")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_thessalonians_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1ti")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2ti")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_timothy_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "tit")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().titus_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().titus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().titus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().titus_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "phm")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().philemon_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().philemon_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().philemon_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().philemon_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "heb")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().hebrews_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().hebrews_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().hebrews_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().hebrews_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jas")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().james_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().james_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().james_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().james_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1pe")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2pe")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_peter_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "1jo")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().one_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().one_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().one_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "2jo")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().two_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().two_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().two_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "3jo")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().three_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().three_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().three_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().three_john_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "jde")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().jude_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().jude_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().jude_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().jude_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
 				else if(hrefbook == "rev")
 				{
-				    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().revelation_short.toString()+" "+hrefchapter+":"+hrefverse;
+				    if(isMobile)
+                    {
+                        try
+                        {
+                        	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText = language_setup().revelation_short.toString()+" "+hrefchapter+":"+hrefverse;
+                        }
+                        catch(err){}
+                    	try
+                    	{
+                    	 text_verse[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText = language_setup().revelation_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    	}
+                    	catch(err){}
+                    }
+                    else
+                    {
+                    text_verse[i].parentElement.parentElement.parentElement.children[1].children[0].children[1].innerText = language_setup().revelation_short.toString()+" "+hrefchapter+":"+hrefverse;
+                    }
 				}
             }
             catch(err){}
@@ -423,9 +1492,19 @@ function verses_screen()
         {
         	setTimeout(function()
         	{
-            	stringtemp = document.getElementsByClassName("lexStrongsDef")[0].children[0].textContent;
-            	stringtemp = stringtemp.substring(1,stringtemp.length).replaceAll(";",",");
-        		translateverse2(stringtemp,"",2);
+        	    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            	if(isMobile)
+            	{
+            	    stringtemp = document.getElementsByClassName("lexStrongsDef")[1].textContent;
+		        	stringtemp = stringtemp.substring(1,stringtemp.length).replaceAll(";",",");
+		    		translateverse2(stringtemp,"",2);
+            	}
+            	else
+            	{
+		        	stringtemp = document.getElementsByClassName("lexStrongsDef")[0].children[0].textContent;
+		        	stringtemp = stringtemp.substring(1,stringtemp.length).replaceAll(";",",");
+		    		translateverse2(stringtemp,"",2);
+		    	}
 			}, 2000);
         }
         if(current_book == "gen")
@@ -753,6 +1832,64 @@ function verses_screen()
 	        		}
 				}, 2000);
     		}
+    	}
+    }
+    catch(err){}
+    try
+    {
+    	const tools_texts_three = document.querySelectorAll('a[data-type="toolsHover"]');
+    	for(let i = 0; i<tools_texts_three.length; i++)
+    	{
+    	    try
+    	    {
+			    tools_texts_three[i].parentElement.parentElement.parentElement.children[2].children[1].children[1].innerText;
+				tools_texts_three[i].parentElement.parentElement.parentElement.children[2].children[1].onclick = function()
+				{
+					setTimeout(function()
+		    		{
+		    			translateverse();
+		    			translatetextindicator = document.getElementById("concData");
+		    			if(translatetextindicator.children[0].children[3].children[0].innerText.includes("Google Translate"))
+		    			{
+		    				console.log("");
+		    			}
+		    			else
+		    			{
+			    			translatetextindicator.children[0].children[3].children[0].innerHTML = "<p>Google Translate</p><br>"+translatetextindicator.children[0].children[3].children[0].innerHTML;
+			    		}
+					}, 2000);
+				}
+		    }
+		    catch(err){}
+    	}
+    }
+    catch(err){}
+    try
+    {
+    	const tools_texts_three = document.querySelectorAll('a[data-type="toolsHover"]');
+    	for(let i = 0; i<tools_texts_three.length; i++)
+    	{
+    	    try
+    	    {
+				tools_texts_three[i].parentElement.parentElement.parentElement.children[2].children[2].children[1].innerText;
+				tools_texts_three[i].parentElement.parentElement.parentElement.children[2].children[2].onclick = function()
+				{
+					setTimeout(function()
+		    		{
+		    			translateverse();
+		    			translatetextindicator = document.getElementById("concData");
+		    			if(translatetextindicator.children[0].children[3].children[0].innerText.includes("Google Translate"))
+		    			{
+		    				console.log("");
+		    			}
+		    			else
+		    			{
+			    			translatetextindicator.children[0].children[3].children[0].innerHTML = "<p>Google Translate</p><br>"+translatetextindicator.children[0].children[3].children[0].innerHTML;
+			    		}
+					}, 2000);
+				}
+		    }
+		    catch(err){}
     	}
     }
     catch(err){}
