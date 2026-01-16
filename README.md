@@ -8,12 +8,12 @@
 
 # Η κάθε λέξη του Strong μεταφράζονται χρησιμοποιώντας Google Translate
 <img width="1920" height="1080" alt="3" src="https://github.com/user-attachments/assets/78c6e864-bbb3-4fd1-8111-ac453248f555" />
-<img width="771" height="1800" alt="4" src="https://github.com/user-attachments/assets/e465b27c-965a-4a77-8d6d-6cf66e0995e6" />
+<img width="214" height="500" alt="4" src="https://github.com/user-attachments/assets/e465b27c-965a-4a77-8d6d-6cf66e0995e6" />
 
 
 # Ο κάθε ορισμός μεταφράζεται χρησιμοποιώντας Google Translate
 <img width="1920" height="1080" alt="4" src="https://github.com/user-attachments/assets/25f755c5-24ba-497f-bf7e-8f2829ea5176" />
-<img width="1543" height="1800" alt="3" src="https://github.com/user-attachments/assets/6328ecf2-ba34-450e-a7e5-0b8ec4ace8e8" />
+<img width="429" height="500" alt="3" src="https://github.com/user-attachments/assets/6328ecf2-ba34-450e-a7e5-0b8ec4ace8e8" />
 
 
 # Για να το φτιάξετε μόνοι σας:
