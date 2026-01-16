@@ -1,9 +1,9 @@
-BlueLetterBible Στα Ελληνικά (Συμφραστικός Πίνακας Λέξεων Εβραϊκών - Ελληνικών)
-Εργαλείο αναλύσεις της Αγίας Γραφής
+### BlueLetterBible Στα Ελληνικά (Συμφραστικός Πίνακας Λέξεων Εβραϊκών - Ελληνικών)
+Εργαλείο μελέτης της Αγίας Γραφής
 
 # Τα εδάφια είναι από την έκδοση της Αγίας Γραφής Φίλος Σπύρος Πέργαμος
 <img width="1920" height="1080" alt="5" src="https://github.com/user-attachments/assets/9bf91dac-6235-4abe-abd5-6d7955ffcd5c" />
-<img width="1543" height="1800" alt="2" src="https://github.com/user-attachments/assets/77483317-c47a-4cea-a4f2-4eeec5e0971f" />
+<img width="429" height="500" alt="2" src="https://github.com/user-attachments/assets/77483317-c47a-4cea-a4f2-4eeec5e0971f" />
 
 
 # Η κάθε λέξη του Strong μεταφράζονται χρησιμοποιώντας Google Translate
